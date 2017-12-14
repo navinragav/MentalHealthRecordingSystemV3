@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Web2.Models.ConsultantClass1>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:darkcyan">Consultant Page</h2>
+<p style=" color:darkblue"> Welcome : @ViewBag.user  &emsp;&emsp;&emsp; Role: @ViewBag.role   &emsp;&emsp;&emsp;&emsp;  @Html.ActionLink("Logout", "signout", "LogClass1") </p>
+<br />
+@using (Html.BeginForm("Index", "ConsultantClass1"))
+{
+    <p style=" color:forestgreen">
+        @Html.Label("Patient Id")
+        <input type="text" name="pid" value="@ViewBag.pid" />
+
+        @Html.Label("Patient Name")
+        <input type="text" name="pname" value="@ViewBag.pname" />
+
+        &ensp; <input type="submit" style="color:midnightblue" value="Search" />
+    </p>
+
+}
+
+<div style="width:1400px;">
+    @Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(model => model.PatientId).Titled("PatientId").Filterable(true).SetWidth(50);
+    columns.Add(model => model.pname).Titled("Patient Name").Filterable(true).SetWidth(450);
+    columns.Add(model => model.Appointment).Format("{0:dd/MM/yyyy}").Titled("Appointment Date").SetWidth(350).Format("{0:dd/MM/yyyy}");
+    columns.Add(model => model.AppointmentTime).Format("{0:hh:mm}").Titled("Appointment Time").SetWidth(350);
+    columns.Add(model => model.DOB).Format("{0:dd/MM/yyyy}").Titled("DOB").SetWidth(150);
+    columns.Add(model => model.Gender).Titled("Gender").SetWidth(150);
+    columns.Add(model => model.Observation).Titled("Observation").SetWidth(150);
+
+    columns.Add(model => model.ICD10).Titled("ICD").SetWidth(150);
+    columns.Add(model => model.TreatmentPlan).Titled("Treatment Plan").SetWidth(350);
+    columns.Add(model => model.Prescription).Titled("Prescription").SetWidth(150);
+    columns.Add(model => model.Amount).Titled("Amount").SetWidth(150);
+    columns.Add(model => model.Status).Titled("Status").SetWidth(150);
+    columns.Add(model => model.cname).Titled("Consultant").SetWidth(150);
+
+
+    columns.Add(model => model.cpid).Titled("").Sanitized(false).Encoded(false).SetWidth(10)
+   .RenderValueAs(model => @Html.ActionLink("Edit", "Edit", new { id = model.cpid }));
+
+    columns.Add().Titled("").Sanitized(false).Encoded(false).SetWidth(10)
+   .RenderValueAs(model => @Html.ActionLink("Details", "Details", new { id = model.cpid }));
+
+    columns.Add().Titled("").Sanitized(false).Encoded(false)
+   .RenderValueAs(model => @Html.ActionLink("Delete", "Delete", new { id = model.cpid }));
+
+}).WithPaging(4).Sortable(true)
+</div>
+

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Web2.Models.Nurse>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4 style="color:darkcyan">Nurse Details</h4>
+<br />
+<p style=" color:darkblue"> Welcome : @ViewBag.user  &emsp;&emsp;&emsp; Role: @ViewBag.role   &emsp;&emsp;&emsp;&emsp;  @Html.ActionLink("Admin Page", "Index", "LogClass1") &emsp;&emsp;&emsp;&emsp;  @Html.ActionLink("Logout", "signout", "LogClass1") </p>
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<br />
+<div style="width:800px;">
+    @Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(model => model.nname).Titled("Nurse Name").Filterable(true).SetWidth(150);
+    columns.Add(model => model.grade).Titled("Grade").Filterable(true).SetWidth(150);
+    columns.Add(model => model.Phone).Titled("Phone").SetWidth(150);
+    
+
+    columns.Add(model => model.nid).Titled("").Sanitized(false).Encoded(false).SetWidth(10)
+   .RenderValueAs(model => @Html.ActionLink("Edit    |", "Edit", new { id = model.nid }));
+
+    columns.Add().Titled("").Sanitized(false).Encoded(false).SetWidth(10)
+   .RenderValueAs(model => @Html.ActionLink("Details |", "Details", new { id = model.nid }));
+
+    columns.Add().Titled("").Sanitized(false).Encoded(false)
+   .RenderValueAs(model => @Html.ActionLink("Delete", "Delete", new { id = model.nid }));
+
+
+}).WithPaging(3).Sortable(true)
+</div>

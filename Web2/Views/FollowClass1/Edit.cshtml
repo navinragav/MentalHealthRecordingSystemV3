@@ -1,0 +1,125 @@
+﻿@model Web2.Models.FollowClass1
+
+@{
+    ViewBag.Title = "Edit";
+
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+
+<link rel="stylesheet" href="~/Content/themes/base/datepicker.css">
+<link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
+<script>
+    $(document).ready(function () {
+        $('.datepicker1').datepicker({ dateFormat: 'dd/mm/yy' })
+    });
+
+    $(document).ready(function () {
+        $('.datepicker2').datepicker({ dateFormat: 'dd/mm/yy' })
+    });
+
+</script>
+<h2>Edit</h2>
+@ViewBag.err2
+<h2 style="color:darkcyan">Followup Page</h2>
+<p style=" color:darkblue"> Welcome : @ViewBag.user  &emsp;&emsp;&emsp; Role: @ViewBag.role &emsp;&emsp;&emsp;&emsp;  @Html.ActionLink("Main Page", "Index", "SecClass1")  &emsp;&emsp;&emsp;&emsp;  @Html.ActionLink("Logout", "signout", "LogClass1") </p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.fid)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PatientId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PatientId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.PatientId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                    @Html.EditorFor(model => model.pname, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.pname, "", new { @class = "text-danger" })
+                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Appointment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    @Html.EditorFor(model => model.Appointment, new { htmlAttributes = new { @class = "form-control datepicker1", @id = "datepicker1" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Appointment, "", new { @class = "text-danger" })
+                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AppointmentTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-time"></i>
+                    @Html.EditorFor(model => model.AppointmentTime, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.AppointmentTime, "", new { @class = "text-danger" })
+                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cname, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.cname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

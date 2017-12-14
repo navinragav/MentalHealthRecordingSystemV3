@@ -1,0 +1,81 @@
+﻿@using Web2.Models;
+@model LogClass1
+@{
+    ViewBag.Title = "Log in";
+}
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+
+<link rel="stylesheet" href="~/Content/themes/base/datepicker.css">
+<link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker({ format: 'dd/mm/yyyy' })
+    });
+</script>
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("LoginPage", "LogClass1", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+
+
+                @Html.AntiForgeryToken()
+                <br />
+                <h2 style="color:darkcyan">&emsp;&emsp;&emsp;&emsp; Log In</h2>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10" style="color:darkblue">
+                        <div class="inner-addon left-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "username" })
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10" style="color:darkblue">
+                        <div class="inner-addon left-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="inner-addon left-addon">
+                            <i  style="color:white"class="glyphicon glyphicon-log-in"></i>
+                            <input type="submit" value="Log in" class="btn btn-default" />
+                            </div>
+                            <br />
+                            <div style="color:red">
+                                <br />@ViewBag.logerr
+                            </div>
+                        </div>
+                </div>
+                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>*@
+            }
+        </section>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,42 @@
+﻿@model Web2.Models.testClass1
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>testClass1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Appointment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appointment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

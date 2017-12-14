@@ -1,0 +1,56 @@
+﻿@model Web2.Models.LogClass1
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 style="color:darkcyan">Delete  User</h2>
+<p style=" color:darkblue"> Welcome : @ViewBag.user  &emsp;&emsp;&emsp; Role: @ViewBag.role   &emsp;&emsp;&emsp;&emsp;  @Html.ActionLink("Logout", "signout") </p>
+<h3 style="color:darkcyan">Are you sure you want to delete this?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Confirm_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Confirm_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to Main", "Index")
+        </div>
+    }
+</div>

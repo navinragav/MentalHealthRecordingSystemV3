@@ -1,0 +1,133 @@
+﻿@model Web2.Models.NurseClass1
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<h2 style="color:darkcyan">Nurse Page</h2>
+<p style=" color:darkblue"> Welcome : @ViewBag.user  &emsp;&emsp;&emsp; Role: @ViewBag.role   &emsp;&emsp;&emsp;&emsp;  @Html.ActionLink("Logout", "signout", "LogClass1") </p>
+<br />
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Appointment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appointment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppointmentTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppointmentTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PastMedicalHistory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PastMedicalHistory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FamilyHistory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FamilyHistory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MentalStatusExamination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MentalStatusExamination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CollateralHistory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CollateralHistory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NursingCarePlan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NursingCarePlan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlergicSpecificMedication)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlergicSpecificMedication)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.npid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
